@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GeneratorMultiTask.ExamPage"
+             Title="Épreuve"
+             BackgroundColor="{AppThemeBinding Light={StaticResource ExamSurface}, Dark={StaticResource ExamBackground}}">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="16" RowSpacing="14">
+
+        <VerticalStackLayout Spacing="8">
+            <Grid ColumnDefinitions="*,Auto">
+                <Label x:Name="MetaLabel"
+                       FontSize="12"
+                       TextColor="{AppThemeBinding Light={StaticResource ExamMutedInk}, Dark={StaticResource ExamMutedFg}}" />
+                <Label x:Name="ProgressLabel"
+                       Grid.Column="1"
+                       FontSize="12"
+                       FontFamily="OpenSansSemibold"
+                       TextColor="{AppThemeBinding Light={StaticResource ExamInk}, Dark={StaticResource ExamMutedFg}}" />
+            </Grid>
+            <ProgressBar x:Name="ExamProgress" Progress="0" HeightRequest="6" />
+        </VerticalStackLayout>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="16">
+                <Border StrokeThickness="1"
+                        Stroke="{AppThemeBinding Light={StaticResource ExamStroke}, Dark={StaticResource ExamStrokeDark}}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource ExamCard}, Dark={StaticResource ExamCardDark}}"
+                        Padding="18"
+                        StrokeShape="RoundRectangle 16">
+                    <VerticalStackLayout Spacing="10">
+                        <Label x:Name="SubjectBadge"
+                               FontSize="12"
+                               FontFamily="OpenSansSemibold"
+                               TextColor="{StaticResource ExamAccent}" />
+                        <Label x:Name="PromptLabel"
+                               FontSize="18"
+                               FontFamily="OpenSansSemibold"
+                               LineBreakMode="WordWrap"
+                               TextColor="{AppThemeBinding Light={StaticResource ExamInk}, Dark={StaticResource ExamMutedFg}}" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <VerticalStackLayout x:Name="OptionsStack" Spacing="10" />
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Button x:Name="NextButton"
+                Grid.Row="2"
+                Text="Valider et suivant"
+                Clicked="OnNextClicked"
+                IsEnabled="False"
+                BackgroundColor="{StaticResource ExamAccent}"
+                TextColor="{StaticResource ExamAccentFg}"
+                FontFamily="OpenSansSemibold"
+                CornerRadius="14"
+                Padding="18,14" />
+    </Grid>
+</ContentPage>

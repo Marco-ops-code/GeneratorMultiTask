@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GeneratorMultiTask.MainPage"
+             Title="Configuration"
+             BackgroundColor="{AppThemeBinding Light={StaticResource ExamSurface}, Dark={StaticResource ExamBackground}}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="18">
+
+            <VerticalStackLayout Spacing="6">
+                <Label Text="Exam Multitâches"
+                       FontSize="26"
+                       FontFamily="OpenSansSemibold"
+                       TextColor="{AppThemeBinding Light={StaticResource ExamInk}, Dark={StaticResource ExamMutedFg}}" />
+                <Label Text="Générateur d'épreuves multi-matières — niveaux, difficultés et modes aléatoire ou uniforme."
+                       FontSize="14"
+                       TextColor="{AppThemeBinding Light={StaticResource ExamMutedInk}, Dark={StaticResource ExamMutedFg}}"
+                       LineBreakMode="WordWrap" />
+            </VerticalStackLayout>
+
+            <Border StrokeThickness="1"
+                    Stroke="{AppThemeBinding Light={StaticResource ExamStroke}, Dark={StaticResource ExamStrokeDark}}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource ExamCard}, Dark={StaticResource ExamCardDark}}"
+                    Padding="16"
+                    StrokeShape="RoundRectangle 16">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Matières (multi-sélection)"
+                           FontFamily="OpenSansSemibold"
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light={StaticResource ExamInk}, Dark={StaticResource ExamMutedFg}}" />
+                    <FlexLayout x:Name="SubjectChips"
+                                Wrap="Wrap"
+                                JustifyContent="Start"
+                                AlignItems="Start"
+                                AlignContent="Start" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeThickness="1"
+                    Stroke="{AppThemeBinding Light={StaticResource ExamStroke}, Dark={StaticResource ExamStrokeDark}}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource ExamCard}, Dark={StaticResource ExamCardDark}}"
+                    Padding="16"
+                    StrokeShape="RoundRectangle 16">
+                <VerticalStackLayout Spacing="14">
+                    <Label Text="Paramètres"
+                           FontFamily="OpenSansSemibold"
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light={StaticResource ExamInk}, Dark={StaticResource ExamMutedFg}}" />
+
+                    <Label Text="Niveau scolaire" FontSize="12" TextColor="{AppThemeBinding Light={StaticResource ExamMutedInk}, Dark={StaticResource ExamMutedFg}}" />
+                    <Picker x:Name="LevelPicker"
+                            Title="Niveau"
+                            TextColor="{AppThemeBinding Light={StaticResource ExamInk}, Dark={StaticResource ExamMutedFg}}" />
+
+                    <Label Text="Difficulté cible" FontSize="12" TextColor="{AppThemeBinding Light={StaticResource ExamMutedInk}, Dark={StaticResource ExamMutedFg}}" />
+                    <Picker x:Name="DifficultyPicker"
+                            Title="Difficulté"
+                            TextColor="{AppThemeBinding Light={StaticResource ExamInk}, Dark={StaticResource ExamMutedFg}}" />
+
+                    <Label Text="Nombre total de questions" FontSize="12" TextColor="{AppThemeBinding Light={StaticResource ExamMutedInk}, Dark={StaticResource ExamMutedFg}}" />
+                    <Picker x:Name="CountPicker"
+                            Title="Nombre"
+                            TextColor="{AppThemeBinding Light={StaticResource ExamInk}, Dark={StaticResource ExamMutedFg}}" />
+
+                    <Label Text="Mode de génération" FontSize="12" TextColor="{AppThemeBinding Light={StaticResource ExamMutedInk}, Dark={StaticResource ExamMutedFg}}" />
+                    <Picker x:Name="ModePicker"
+                            Title="Mode"
+                            TextColor="{AppThemeBinding Light={StaticResource ExamInk}, Dark={StaticResource ExamMutedFg}}" />
+
+                    <VerticalStackLayout x:Name="SessionCodePanel" IsVisible="False" Spacing="6">
+                        <Label Text="Code séance (partagé en classe pour reproduire l'épreuve)"
+                               FontSize="12"
+                               TextColor="{AppThemeBinding Light={StaticResource ExamMutedInk}, Dark={StaticResource ExamMutedFg}}" />
+                        <Entry x:Name="SessionCodeEntry"
+                               Placeholder="Ex. : SALLE3-14AVR"
+                               TextColor="{AppThemeBinding Light={StaticResource ExamInk}, Dark={StaticResource ExamMutedFg}}"
+                               PlaceholderColor="{AppThemeBinding Light={StaticResource ExamMutedInk}, Dark={StaticResource ExamMutedFg}}" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button x:Name="StartButton"
+                    Text="Générer et commencer"
+                    Clicked="OnStartClicked"
+                    BackgroundColor="{StaticResource ExamAccent}"
+                    TextColor="{StaticResource ExamAccentFg}"
+                    FontFamily="OpenSansSemibold"
+                    CornerRadius="14"
+                    Padding="18,14" />
+
+            <Label x:Name="ErrorLabel"
+                   TextColor="#c0392b"
+                   FontSize="13"
+                   IsVisible="False"
+                   LineBreakMode="WordWrap" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
